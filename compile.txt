@@ -1,0 +1,1 @@
+gcc window.c -o window -lSDL2
