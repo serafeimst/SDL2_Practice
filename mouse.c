@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
+//compile with gcc mouse.c -o mouse -lSDL2
+
 void SetPixel(SDL_Surface* surface, int x, int y, uint8_t r, uint8_t g, uint8_t b){
     
     SDL_LockSurface(surface);
@@ -29,7 +31,7 @@ int main()
         printf("SDL video system is ready to go\n");
     }
 
-    window = SDL_CreateWindow("C++ SDL2 Window",
+    window = SDL_CreateWindow("SDL2 Window",
             20,
             20,
             640,
@@ -38,10 +40,8 @@ int main()
 
     screen = SDL_GetWindowSurface(window);
 
-    // Infinite loop for our application
     bool gameIsRunning = true;
 
-    // Main application loop
     while(gameIsRunning)
     {
         SDL_Event event;
@@ -50,10 +50,8 @@ int main()
         Uint32 buttons;
         buttons = SDL_GetMouseState(&x,&y);
 
-        // Start our event loop
         while(SDL_PollEvent(&event))
         {
-            // Handle each specific event
             if(event.type == SDL_QUIT)
             {
                 gameIsRunning= false;
